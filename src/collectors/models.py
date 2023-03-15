@@ -1,6 +1,8 @@
 """
 Описание моделей данных (DTO).
 """
+from datetime import datetime
+from typing import Optional
 
 from pydantic import Field, BaseModel
 
@@ -106,6 +108,9 @@ class CountryDTO(BaseModel):
     population: int
     subregion: str
     timezones: list[str]
+    area: Optional[float]
+    longitude: Optional[float]
+    latitude: Optional[float]
 
 
 class CurrencyRatesDTO(BaseModel):
@@ -148,6 +153,35 @@ class WeatherInfoDTO(BaseModel):
     humidity: int
     wind_speed: float
     description: str
+    visibility: int
+    dt: datetime
+    timezone: int
+
+
+class NewsInfoDTO(HashableBaseModel):
+    """
+    Модель данных о новости.
+
+    .. code-block::
+
+       NewsInfoDTO(
+            source="CNN"
+            author = "Luke McGee, Jack Guy",
+            title = "Nicola Sturgeon unexpectedly quits as first minister of Scotland amid swirl of political setbacks,
+            citing 'brutality' of public life - CNN",
+            description="Nicola Sturgeon, the figurehead of the Scottish independence movement, dramatically announced
+            on Wednesday that she would resign after eight years as Scotland's first minister.",
+            url="https://www.cnn.com/2023/02/15/uk/nicola-sturgeon-resigns-scotland-intl/index.html",
+            publishedAt = "2023-02-15T12:18:00Z"
+        )
+    """
+
+    source: Optional[str]
+    author: Optional[str]
+    title: Optional[str]
+    description: Optional[str]
+    url: Optional[str]
+    published_at: Optional[str]
 
 
 class LocationInfoDTO(BaseModel):
@@ -195,9 +229,22 @@ class LocationInfoDTO(BaseModel):
             currency_rates={
                 "EUR": 0.016503,
             },
+            news=[
+                NewsInfoDTO(
+                    source="CNN"
+                    author = "Luke McGee, Jack Guy",
+                    title = "Nicola Sturgeon unexpectedly quits as first minister of Scotland amid swirl of political setbacks,
+                    citing 'brutality' of public life - CNN",
+                    description="Nicola Sturgeon, the figurehead of the Scottish independence movement, dramatically announced
+                    on Wednesday that she would resign after eight years as Scotland's first minister.",
+            url="https://www.cnn.com/2023/02/15/uk/nicola-sturgeon-resigns-scotland-intl/index.html",
+            publishedAt = "2023-02-15T12:18:00Z"
+                )
+            ]
         )
     """
 
     location: CountryDTO
     weather: WeatherInfoDTO
     currency_rates: dict[str, float]
+    news: Optional[list[NewsInfoDTO]]

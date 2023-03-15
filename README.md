@@ -33,10 +33,12 @@ Install the appropriate software:
     To access the API, visit the appropriate resources and obtain an access token:
     - APILayer – Geography API (https://apilayer.com/marketplace/geo-api)
     - OpenWeather – Weather Free Plan (https://openweathermap.org/price#weather)
+    - NewsApi - News Free API (https://newsapi.org/v2)
    
     Set received access tokens as environment variable values (in `.env` file):
     - `API_KEY_APILAYER` – for APILayer access token
     - `API_KEY_OPENWEATHER` – for OpenWeather access token
+    - `API_KEY_NEWSAPI` – for NewsApi access token
 
 2. Build the container using Docker Compose:
     ```shell
