@@ -60,11 +60,13 @@
 
     * APILayer — Geography API (https://apilayer.com/marketplace/geo-api)
     * OpenWeather – Weather Free Plan (https://openweathermap.org/price#weather)
+    * NewsApi – News free API (https://newsapi.org/v2)
 
     Задайте полученные токены доступа в качестве значений переменных окружения (в файле `.env`):
 
     * `API_KEY_APILAYER` – для токена доступа к APILayer
     * `API_KEY_OPENWEATHER` – для токена доступа к OpenWeather
+    * `API_KEY_NEWSAPI` – для токена доступа к NewsApi
 
 2. Соберите Docker-контейнер с помощью Docker Compose:
     .. code-block:: console
